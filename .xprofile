@@ -1,0 +1,14 @@
+#!/bin/sh
+
+#Old xprofile (Apr 12, 2022). Don't known/remember where this came from
+#CM_STORM_RECON_ID=$(xinput list | grep "ELECOM" | head -n 1 | sed -r 's/.*id=([0-9]+).*/\1/')
+#xinput --set-button-map ${CM_STORM_RECON_ID} 9 12 3 4 5 6 7 8 1 10 11 2
+
+# Find Elecom Huge mouse and swap buttons (only works with Xserver)
+MOUSE_ELECOM=$(xinput list | grep "ELECOM TrackBall Mouse HUGE TrackBall.*pointer" | sed -r 's/.*id=([0-9]+).*/\1/')
+xinput --set-button-map "$MOUSE_ELECOM" 9 2 3 4 5 6 7 8 1 10 11 12
+echo 'Buttons swaped for ELECOM mouse as device '"$MOUSE_ELECOM"
+	
+# Enable trackball scroll when button 1 (the original) is pressed
+xinput set-prop "pointer:ELECOM TrackBall Mouse HUGE TrackBall" 'libinput Button Scrolling Button' 1
+xinput set-prop "pointer:ELECOM TrackBall Mouse HUGE TrackBall" 'libinput Scroll Method Enabled' 0 0 1
