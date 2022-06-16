@@ -88,6 +88,15 @@ alias teams='google-chrome --app=https://teams.microsoft.com'
 
 # Use gvim to have access to the global clipboard
 alias vim='nvim'
+alias vi='nvim'
+alias v='nvim'
+
+alias py='python' 
+
+alias lsa='ls -a'
+alias lsall='ls -all'
+
+alias so='source'
 
 # Setup starship for terminal
 eval "$(starship init bash)"
