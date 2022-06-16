@@ -60,7 +60,7 @@ keymap("v", ">", ">gv", opts)
 keymap("v", "<A-Down>", ":m .+1<CR>==", opts)
 keymap("v", "<A-Up>", ":m .-2<CR>==", opts)
 
--- When pasting over a word, don't put replaced work in clipboard
+-- When pasting over a word, don't put replaced word in clipboard
 keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
