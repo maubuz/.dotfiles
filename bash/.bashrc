@@ -26,12 +26,6 @@ fi
 
 unset rc
 
-# Aliases for triggering key swaps on keyboard and mouse
-
-KMONAD_PATH="/home/mau/Code/kmonad/keymap/user/mauedu"     
-KMONAD_BIN="$KMONAD_PATH"/kmonad
-alias keyboard='sudo -b "$KMONAD_BIN" "$KMONAD_PATH"/mauMap.kbd'
-
 mousef () {
 #	MOUSE_ELECOM=$(xinput list | grep "ELECOM" | head -n 1 | sed -r 's/.*id=([0-9]+).*/\1/')
 
@@ -75,7 +69,7 @@ sofle-flash(){
 }
 
 # Aliases to facilitate working with Insync
-alias 6p3='cd "/home/mau/Insync/mauri.andres@gmail.com/GDrive/JAC G/Courses/420-6P3/6P3-W22"'
+alias 1p6='cd /home/mau/Insync/mau.jac.cs@gmail.com/Google\ Drive/JAC\ G/Courses/420-1P6'
 
 
 # Set NVM environmental variables
@@ -107,6 +101,18 @@ alias ls='lsd'
 # Video application v4l2-ctl
 alias v4l='v4l2-ctl'
 
+alias wm='cd ~/Insync/mauri.andres@gmail.com/GDrive/Local_Sync/ZettleMau && nvim index.md'
+
+alias wj='cd ~/Insync/mau.jac.cs@gmail.com/Google\ Drive/JAC\ G && nvim index.md'
+
+alias myvim='cd ~/.config/nvim && nvim init.lua'
+
+alias lg='lazygit'
+
+alias Code='cd ~/Code && lsa'
+
+alias brc='nvim ~/.bashrc'
+
 # Fancy splash screen in terminal
 # Disabled because was too slow. Suspect GPU was causing slowdown
 #neofetch
@@ -127,4 +133,11 @@ _dotnet_bash_complete()
 }
 
 complete -f -F _dotnet_bash_complete dotnet
+
+# Deno paths
+export DENO_INSTALL="/home/mau/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# Doom Emacs
+export PATH="~/.emacs.d/bin:$PATH"
 
