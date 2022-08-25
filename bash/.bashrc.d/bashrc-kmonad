@@ -1,0 +1,6 @@
+# Aliases for triggering key swaps on keyboard and mouse
+# For Fedora systems, place this inside directory ~/.bashrc.d
+
+KMONAD_PATH="/home/mau/Code/mau-kmonad/user/mauedu"
+KMONAD_BIN="$KMONAD_PATH"/kmonad
+alias keyboard='sudo -b "$KMONAD_BIN" "$KMONAD_PATH"/mauMap.kbd'
