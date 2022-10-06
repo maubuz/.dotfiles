@@ -69,8 +69,14 @@ sofle-flash(){
 }
 
 # Aliases to facilitate working with Insync
-alias 1p6='cd /home/mau/Insync/mau.jac.cs@gmail.com/Google\ Drive/JAC\ G/Courses/420-1P6'
+alias 1p6='cd /home/mau/Insync/mau.jac.cs@gmail.com/Google\ Drive/JAC\ G/Courses/420-1P6/1P6/1P6-Notes'
 
+1p6-serve(){
+    1p6
+    npx docsify serve &
+    sleep 1
+    firefox http://localhost:3000
+}
 
 # Set NVM environmental variables
 export NVM_DIR="$HOME/.nvm"
@@ -78,12 +84,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Start Teams in google-chrome as an app
-alias teams='google-chrome --app=https://teams.microsoft.com'
+alias teams='google-chrome --app=https://teams.microsoft.com --enable-features=WebRTCPipeWireCapturer --enable-features=UseOzonePlatform --ozone-platform=wayland'
 
-# Use gvim to have access to the global clipboard
-alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
+
+alias em='emacs'
 
 alias py='python' 
 
@@ -91,6 +97,7 @@ alias lsa='ls -a'
 alias lsall='ls -all'
 
 alias so='source'
+alias sobrc='source ~/.bashrc'
 
 # Setup starship for terminal
 eval "$(starship init bash)"
@@ -101,7 +108,7 @@ alias ls='lsd'
 # Video application v4l2-ctl
 alias v4l='v4l2-ctl'
 
-alias wm='cd ~/Insync/mauri.andres@gmail.com/GDrive/Local_Sync/ZettleMau && nvim index.md'
+alias wm='cd ~/Insync/mauri.andres@gmail.com/GDrive/Local_Sync/ZettleMau && emacs index.org'
 
 alias wj='cd ~/Insync/mau.jac.cs@gmail.com/Google\ Drive/JAC\ G && nvim index.md'
 
@@ -112,6 +119,8 @@ alias lg='lazygit'
 alias Code='cd ~/Code && lsa'
 
 alias brc='nvim ~/.bashrc'
+
+alias dnr='dotnet run'
 
 # Fancy splash screen in terminal
 # Disabled because was too slow. Suspect GPU was causing slowdown
