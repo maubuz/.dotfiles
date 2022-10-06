@@ -85,3 +85,27 @@
 (global-set-key (kbd "C-c m") 'mauricio-link)
 
 (projectile-add-known-project "~/Insync/mauri.andres@gmail.com/GDrive/Local_Sync/ZettleMau")
+
+;; Repeated window movements such as resizing.
+;; Requires hydra to be enabled in init.el
+(map! :leader
+      (:prefix "w"
+       :desc "Hydra Window control" "SPC" #'+hydra/window-nav/body))
+
+;; Scroll buffer without moving point
+;; Source: https://stackoverflow.com/questions/8993183
+(defun scroll-down-in-place (n)
+  (interactive "p")
+  (forward-line (* -1 n))
+  (unless (eq (window-start) (point-min))
+    (scroll-down n)))
+
+(defun scroll-up-in-place (n)
+  (interactive "p")
+  (forward-line n)
+  (unless (eq (window-end) (point-max))
+    (scroll-up n)))
+
+(global-set-key [(shift down)] 'scroll-up-in-place)
+(global-set-key [(shift up)] 'scroll-down-in-place)
+
