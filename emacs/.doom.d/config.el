@@ -109,3 +109,17 @@
 (global-set-key [(shift down)] 'scroll-up-in-place)
 (global-set-key [(shift up)] 'scroll-down-in-place)
 
+;; Customize Org Bullets and Terminal Fallback with org-superstart
+;; Take from org-superstart docs: https://github.com/integral-dw/org-superstar-mode/blob/master/DEMO.org
+
+(custom-set-faces!
+  '(org-document-title :height 2.074)
+  '(outline-3 :height 1.2 :weight demibold)
+  '(outline-2 :height 1.44 :weight demibold)
+  '(outline-1 :height 1.728 :weight demibold)
+  )
+;; New bullets for org
+(setq org-superstar-headline-bullets-list
+      '("◉" ("🞛" ?◈) "○" "▷"))
+;; Hide away leading stars on terminal.
+(setq org-superstar-leading-fallback ?\s)
