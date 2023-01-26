@@ -36,7 +36,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -118,8 +118,17 @@
   '(outline-2 :height 1.44 :weight demibold)
   '(outline-1 :height 1.728 :weight demibold)
   )
+
+
+
 ;; New bullets for org
 (setq org-superstar-headline-bullets-list
       '("◉" ("🞛" ?◈) "○" "▷"))
-;; Hide away leading stars on terminal.
+;; Hide away leading stars on terminal when running emacs on terminal.
 (setq org-superstar-leading-fallback ?\s)
+;; Org: blank lines when collapsed with the following option:
+;;(setq org-cycle-separator-line 1)
+;; Leave 1 blank line before new heading/item
+(setq org-blank-before-new-entry
+      '((heading . t)
+        (plain-list-item . t)))
