@@ -69,10 +69,10 @@ sofle-flash(){
 }
 
 # Aliases to facilitate working with Insync
-alias 1p6='cd /home/mau/Insync/mau.jac.cs@gmail.com/Google\ Drive/JAC\ G/Courses/420-1P6/1P6/1P6-Notes'
+alias 6p3='cd /home/mau/Insync/mau.jac.cs@gmail.com/Google\ Drive/JAC\ G/Courses/420-6P3/6P3-Notes'
 
-1p6-serve(){
-    1p6
+6p3-serve(){
+    6p3
     npx docsify serve &
     sleep 1
     firefox http://localhost:3000
@@ -121,6 +121,8 @@ alias Code='cd ~/Code && lsa'
 alias brc='nvim ~/.bashrc'
 
 alias dnr='dotnet run'
+
+alias kssh='kitty +kitten ssh'
 
 # Fancy splash screen in terminal
 # Disabled because was too slow. Suspect GPU was causing slowdown
