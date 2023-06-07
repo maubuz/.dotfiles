@@ -152,3 +152,6 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 # Doom Emacs
 export PATH="~/.emacs.d/bin:$PATH"
 
+# Set nvim as default editor
+export VISUAL="/usr/bin/nvim"
+export EDITOR="/usr/bin/nvim"
