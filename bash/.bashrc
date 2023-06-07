@@ -124,6 +124,9 @@ alias dnr='dotnet run'
 
 alias kssh='kitty +kitten ssh'
 
+# Easily add/edit bashrc files
+alias brcd='cd ~/.bashrc.d/ && nvim .'
+
 # Fancy splash screen in terminal
 # Disabled because was too slow. Suspect GPU was causing slowdown
 #neofetch
