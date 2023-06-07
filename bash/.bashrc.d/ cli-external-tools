@@ -1,0 +1,4 @@
+dpl(){
+  deepl --fr en --to fr -s <<<"$1"
+}
+
