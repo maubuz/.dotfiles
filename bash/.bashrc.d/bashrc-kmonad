@@ -4,3 +4,4 @@
 KMONAD_PATH="/home/mau/Code/mau-kmonad/user/mauedu"
 KMONAD_BIN="$KMONAD_PATH"/kmonad
 alias keyboard='sudo -b "$KMONAD_BIN" "$KMONAD_PATH"/mauMap.kbd'
+alias key='sudo -b "$KMONAD_BIN" "$KMONAD_PATH"/mauMap.kbd'
