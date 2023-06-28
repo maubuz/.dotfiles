@@ -50,10 +50,12 @@ if [ -n "$PACKAGE_MANAGER" ]; then
     sudo $PACKAGE_MANAGER install fd-find -y
     # For debian based, fd is used for another program (not installed by default)
     # Create an alias for `fd`
-    if [ $PACKAGE_MANAGER=="apt" ]; then
-      cat >> ~/.bashrc <<EOF
-      alias fd="fdfind"
-      EOF
-    if
+    
+    # TODO: if condition not working as expected.
+#    if [ "$PACKAGE_MANAGER"="apt" ]; then
+#      cat >> ~/.bashrc <<- EOF
+#alias fd="fdfind"
+#EOF
+#    fi
 
 fi
