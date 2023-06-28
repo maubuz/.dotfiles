@@ -26,6 +26,7 @@ function get-script-path()
 }
 
 # `get-package-manager` must be in the same dir as this script
+# This script returns `dnf` or `apt`, depending on the distribution
 PACKAGE_MANAGER_SCRIPT="$(get-script-path)/get-package-manager.sh"
 
 # Assure file exists and is readable before sourcing
@@ -47,4 +48,12 @@ if [ -n "$PACKAGE_MANAGER" ]; then
     # fd: simple, fast and user-friendly alternative to 'find', writen in rust
     # https://github.com/sharkdp/fd
     sudo $PACKAGE_MANAGER install fd-find -y
+    # For debian based, fd is used for another program (not installed by default)
+    # Create an alias for `fd`
+    if [ $PACKAGE_MANAGER=="apt" ]; then
+      cat >> ~/.bashrc <<EOF
+      alias fd="fdfind"
+      EOF
+    if
+
 fi
