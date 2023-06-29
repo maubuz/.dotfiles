@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+
+# Cli for Deepl translation: https://www.deepl.com/translator
+# package deepl-cli 0.5.0, installed using pipx on Python 3.11.3
+#
+if which deepl > /dev/null; then
+    dpl(){
+        deepl --fr en --to fr -s <<<"$1"
+    }
+    echo "Created 'dpl' alias for deepl cli tool"
+fi
