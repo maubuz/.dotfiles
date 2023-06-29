@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Aliases for triggering key swaps on keyboard and mouse
 # For Fedora systems, place this inside directory ~/.bashrc.d
 
