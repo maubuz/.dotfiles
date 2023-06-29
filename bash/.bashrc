@@ -1,8 +1,8 @@
-# .bashrc
+#!/bin/bash
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+    . /etc/bashrc
 fi
 
 # User specific environment
@@ -17,55 +17,55 @@ export PATH
 
 # User specific aliases and functions
 if [ -d ~/.bashrc.d ]; then
-	for rc in ~/.bashrc.d/*; do
-		if [ -f "$rc" ]; then
-			. "$rc"
-		fi
-	done
+    for rc in ~/.bashrc.d/*; do
+        if [ -f "$rc" ]; then
+            . "$rc"
+        fi
+    done
 fi
 
 unset rc
 
 mousef () {
-#	MOUSE_ELECOM=$(xinput list | grep "ELECOM" | head -n 1 | sed -r 's/.*id=([0-9]+).*/\1/')
+    #	MOUSE_ELECOM=$(xinput list | grep "ELECOM" | head -n 1 | sed -r 's/.*id=([0-9]+).*/\1/')
 
-	MOUSE_ELECOM=$(xinput list | grep "ELECOM TrackBall Mouse HUGE TrackBall.*pointer" | sed -r 's/.*id=([0-9]+).*/\1/')
-	xinput --set-button-map "$MOUSE_ELECOM" 9 2 3 4 5 6 7 8 1 10 11 12
-	echo 'Buttons swaped for ELECOM mouse as device '"$MOUSE_ELECOM"
-	
-	# Enable trackball scroll when button 1 (the original) is pressed
-	xinput set-prop "pointer:ELECOM TrackBall Mouse HUGE TrackBall" 'libinput Button Scrolling Button' 1
-	xinput set-prop "pointer:ELECOM TrackBall Mouse HUGE TrackBall" 'libinput Scroll Method Enabled' 0 0 1
+    MOUSE_ELECOM=$(xinput list | grep "ELECOM TrackBall Mouse HUGE TrackBall.*pointer" | sed -r 's/.*id=([0-9]+).*/\1/')
+    xinput --set-button-map "$MOUSE_ELECOM" 9 2 3 4 5 6 7 8 1 10 11 12
+    echo 'Buttons swaped for ELECOM mouse as device '"$MOUSE_ELECOM"
+
+    # Enable trackball scroll when button 1 (the original) is pressed
+    xinput set-prop "pointer:ELECOM TrackBall Mouse HUGE TrackBall" 'libinput Button Scrolling Button' 1
+    xinput set-prop "pointer:ELECOM TrackBall Mouse HUGE TrackBall" 'libinput Scroll Method Enabled' 0 0 1
 }
 
 # Open VS Code into my sofle config, build it
 sofle(){
-  pushd /home/mau/Code/qmk_firmware/keyboards/sofle/keymaps/mau_sofle
-  code .
-  pushd /home/mau/Code/qmk_firmware
-  util/docker_build.sh sofle:mau_sofle
+    pushd /home/mau/Code/qmk_firmware/keyboards/sofle/keymaps/mau_sofle
+    code .
+    pushd /home/mau/Code/qmk_firmware
+    util/docker_build.sh sofle:mau_sofle
 }
 
 sofle-build(){
-  if [[ "$PWD" != "$HOME/Code/qmk_firmware" ]]; then
-    pushd /home/mau/Code/qmk_firmware
-    util/docker_build.sh sofle:mau_sofle
-    popd
-  else
-    echo "Already in qmk directory"
-    util/docker_build.sh sofle:mau_sofle
-  fi
+    if [[ "$PWD" != "$HOME/Code/qmk_firmware" ]]; then
+        pushd /home/mau/Code/qmk_firmware
+        util/docker_build.sh sofle:mau_sofle
+        popd
+    else
+        echo "Already in qmk directory"
+        util/docker_build.sh sofle:mau_sofle
+    fi
 }
 
 sofle-flash(){
-  if [[ "$PWD" != "$HOME/Code/qmk_firmware" ]]; then
-    pushd /home/mau/Code/qmk_firmware
-    sudo util/docker_build.sh sofle:mau_sofle:flash
-    popd
-  else
-    echo "Already in qmk directory"
-    sudo util/docker_build.sh sofle:mau_sofle:flash
-  fi
+    if [[ "$PWD" != "$HOME/Code/qmk_firmware" ]]; then
+        pushd /home/mau/Code/qmk_firmware
+        sudo util/docker_build.sh sofle:mau_sofle:flash
+        popd
+    else
+        echo "Already in qmk directory"
+        sudo util/docker_build.sh sofle:mau_sofle:flash
+    fi
 }
 
 # Aliases to facilitate working with Insync
@@ -91,7 +91,7 @@ alias v='nvim'
 
 alias em='emacs'
 
-alias py='python' 
+alias py='python'
 
 alias lsa='ls -a'
 alias lsall='ls -all'
@@ -135,15 +135,15 @@ alias brcd='cd ~/.bashrc.d/ && nvim .'
 
 _dotnet_bash_complete()
 {
-  local word=${COMP_WORDS[COMP_CWORD]}
+    local word=${COMP_WORDS[COMP_CWORD]}
 
-  local completions
-  completions="$(dotnet complete --position "${COMP_POINT}" "${COMP_LINE}" 2>/dev/null)"
-  if [ $? -ne 0 ]; then
-    completions=""
-  fi
+    local completions
+    completions="$(dotnet complete --position "${COMP_POINT}" "${COMP_LINE}" 2>/dev/null)"
+    if [ $? -ne 0 ]; then
+        completions=""
+    fi
 
-  COMPREPLY=( $(compgen -W "$completions" -- "$word") )
+    COMPREPLY=( $(compgen -W "$completions" -- "$word") )
 }
 
 complete -f -F _dotnet_bash_complete dotnet
