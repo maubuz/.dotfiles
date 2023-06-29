@@ -2,6 +2,14 @@
 
 
 
+# fd: simple, fast and user-friendly alternative to 'find', writen in rust
+# https://github.com/sharkdp/fd
+#
+if which fdfind > /dev/null; then
+    alias fd="fdfind"
+    echo "Setting 'fd' alias for fdfind. By default fd ignores hidden files."
+fi
+
 # Cli for Deepl translation: https://www.deepl.com/translator
 # package deepl-cli 0.5.0, installed using pipx on Python 3.11.3
 #
