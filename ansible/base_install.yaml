@@ -1,0 +1,26 @@
+---
+- name: Update all hosts
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Update via package manager
+      package:
+        update_cache: true
+
+    - name: Install git
+      package:
+        name: git
+
+    - name: Install Python
+      package:
+        name: python3
+
+    - name: Make python same as python3
+      package:
+        name: python-is-python3
+
+    - name: Install pip 
+      package:
+        name: python3-pip
+

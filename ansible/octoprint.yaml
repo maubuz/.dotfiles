@@ -1,0 +1,24 @@
+---
+- name: Install Octoprint
+  hosts: octoprint_servers
+  become: true
+
+  tasks:
+    - name: Update packages
+      package:
+        update-cache: true
+
+    - name: Install pipx
+      package:
+        name: pipx
+
+    - name: Install uStreamer
+      package:
+        name: ustreamer
+
+    - name: Install Octoprint using pipx
+      community.general.pipx:
+        name: OctoPrint
+      become_user: mau
+
+

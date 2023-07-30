@@ -1,0 +1,4 @@
+octoprint_servers:
+  hosts:
+    octolap.local:
+
