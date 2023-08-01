@@ -1,0 +1,18 @@
+---
+
+- name: Install Traefik via snap
+  hosts: octoprint_servers
+  become: true
+
+  tasks:
+    - name: Update packages
+      package:
+        update-cache: true
+
+    - name: Install snapd
+      package:
+        package: snapd
+
+    - name: Install Traefik using Ansible Snap in general collection
+      community.general.snap:
+        name: traefik
