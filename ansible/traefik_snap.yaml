@@ -16,3 +16,9 @@
     - name: Install Traefik using Ansible Snap in general collection
       community.general.snap:
         name: traefik
+
+    - name: Enable Traefic service
+      community.general.snap:
+        name: traefik
+        state: enabled
+
