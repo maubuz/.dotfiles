@@ -1,0 +1,12 @@
+providers:
+  file:
+    directory: /var/snap/traefik/common/
+    watch: true
+
+api:
+  dashboard: true 
+
+entryPoints:
+  web:
+    address: :80
+

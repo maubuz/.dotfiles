@@ -1,0 +1,26 @@
+http:
+  routers:
+    octoprint-route:
+      entryPoints:
+       - "web"
+      service: octoprint
+      rule: "Host(`octolap.local`)"
+
+    dashboard:
+      service: "api@internal"
+      rule: "(Host(`octolap.local`) && PathPrefix(`/api`, `/dashboard`))"
+      middlewares:
+        - "auth"
+
+  middlewares:
+    auth:
+      basicAuth:
+        users:
+          - "test:$apr1$C6rNNAkA$q8PXI4FfOdDb13yht3fwl1"
+
+  services:
+    octoprint:
+      loadBalancer:
+        servers:
+          - url: http://octolap.local:5000/
+

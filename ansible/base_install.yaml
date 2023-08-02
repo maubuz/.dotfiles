@@ -24,3 +24,7 @@
       package:
         name: python3-pip
 
+    - name: Install xclip as clipboard tool
+      package:
+        name: xclip
+
