@@ -22,3 +22,16 @@
         name: traefik
         state: enabled
 
+    - name: Copy Traefik static configuration file
+      copy:
+        src: traefik.yml
+        dest: /etc/traefik/
+        owner: root
+        group: root
+
+    - name: Copy Traefik dynamic configuration file
+      copy:
+        src: dynamic_conf.yml
+        dest: /etc/traefik/
+        owner: root
+        group: root

@@ -1,0 +1,14 @@
+http:
+  routers:
+    octoprint-route:
+      entryPoints:
+       - "web"
+      service: octoprint
+      rule: "Host(`octolap.local`)"
+
+  services:
+    octoprint:
+      loadBalancer:
+        servers:
+          - url: http://octolap.local:5000/
+

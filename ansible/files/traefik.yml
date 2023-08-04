@@ -1,6 +1,6 @@
 providers:
   file:
-    directory: /var/snap/traefik/common/
+    directory: /etc/traefik/
     watch: true
 
 api:
