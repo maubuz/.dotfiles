@@ -21,4 +21,23 @@
         name: OctoPrint
       become_user: mau
 
+    # - name: Add user to dialout and tty groups
+
+
+    - name: Copy SystemD unit for Octoprint
+      copy:
+        src: octoprint.service
+        dest: /etc/systemd/system/
+        owner: root
+        group: root
+
+    - name: Activate and enable systemd unit for octoprint
+      systemd:
+        daemon_reload: true
+        enabled: true
+        name: octoprint.service
+        state: restarted
+        
+
+
 

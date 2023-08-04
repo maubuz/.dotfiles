@@ -1,0 +1,16 @@
+[Unit]
+Description=Octoprint
+After=network.target
+
+[Service]
+ExecStart=/home/mau/.local/bin/octoprint serve
+WorkingDirectory=/home/mau/.octoprint
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=mau
+CPUSchedulingPolicy=rr
+CPUSchedulingPriority=80
+
+[Install]
+WantedBy=multi-user.target
