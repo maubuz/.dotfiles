@@ -9,8 +9,8 @@ StandardOutput=inherit
 StandardError=inherit
 Restart=always
 User=mau
-CPUSchedulingPolicy=rr
-CPUSchedulingPriority=80
+#CPUSchedulingPolicy=rr
+#CPUSchedulingPriority=75
 
 [Install]
 WantedBy=multi-user.target
