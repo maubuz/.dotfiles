@@ -21,8 +21,11 @@
         name: OctoPrint
       become_user: mau
 
-    # - name: Add user to dialout and tty groups
-
+    - name: Add user to dialout and tty groups
+      user:
+        name: mau
+        append: true
+        groups: dialout, tty, video
 
     - name: Copy SystemD unit for Octoprint
       copy:
@@ -37,7 +40,17 @@
         enabled: true
         name: octoprint.service
         state: restarted
-        
 
+    - name: Copy SystemD unit for uStremer
+      copy:
+        src: ustreamer.service
+        dest: /etc/systemd/system/
+        owner: root
+        group: root
 
-
+    - name: Activate and enable systemd unit for uStreamer
+      systemd:
+        daemon_reload: true
+        enabled: true
+        name: ustreamer.service
+        state: restarted

@@ -1,0 +1,9 @@
+# Taken from https://github.com/pikvm/ustreamer/issues/16
+[Unit]
+Description=uStreamer service
+After=network.target
+[Service]
+User=mau
+ExecStart=/usr/bin/ustreamer --desired-fps=10 --host=octolap.local
+[Install]
+WantedBy=multi-user.target
