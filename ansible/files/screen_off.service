@@ -1,0 +1,15 @@
+# Taken from https://askubuntu.com/a/1194293
+
+[Unit]
+Description=Blank screen after 1 min and turn it off after 2 min. Any keypress will turn it back on.
+After=ssh.service
+
+[Service]
+Type=oneshot
+Environment=TERM=linux
+StandardOutput=tty
+TTYPath=/dev/console
+ExecStart=/home/mau/laptop_server/screen_off.sh
+
+[Install]
+WantedBy=local.target

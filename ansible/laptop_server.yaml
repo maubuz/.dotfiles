@@ -1,0 +1,52 @@
+
+---
+- name: Setup a laptop as a server
+  hosts: laptop_servers
+  become: true
+
+  tasks:
+#    - name: Update packages
+#      package:
+#        update-cache: true
+
+    - name: Disable the use of the laptop lid.
+      lineinfile:
+        path: /etc/systemd/logind.conf
+        regexp: '^#HandleLidSwitch='
+        line: HandleLidSwitch=ignore
+        group: root
+        owner: root
+        
+    - name: Lid switch does not respect suspend blockers by default.
+      lineinfile:
+        path: /etc/systemd/logind.conf
+        regexp: '^#LidSwitchIgnoreInhibited='
+        line: LidSwitchIgnoreInhibited=no
+        group: root
+        owner: root
+
+    - name: Copy screen off script to laptop
+      copy:
+        src: screen_off.sh
+        dest: /home/mau/laptop_server/
+        owner: root
+        group: root
+        mode: 0554
+      
+    - name: Copy systemd unit for screen off script
+      copy:
+        src: screen_off.service
+        dest: /etc/systemd/system/
+        owner: root
+        group: root
+
+    - name: enable screen_off service
+      systemd:
+        daemon_reload: true
+        enabled: true
+        name: screen_off.service
+        state: restarted
+
+    - name: Force systemd to re-execute itself
+      systemd:
+        daemon_reexec: true

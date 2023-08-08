@@ -2,3 +2,7 @@ octoprint_servers:
   hosts:
     octolap.local:
 
+laptop_servers:
+  hosts:
+    octolap.local:
+
