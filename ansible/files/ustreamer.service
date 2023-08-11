@@ -1,9 +1,23 @@
-# Taken from https://github.com/pikvm/ustreamer/issues/16
+# Taken mostly from https://github.com/pikvm/ustreamer/issues/16
+# Systemd service docs: https://www.freedesktop.org/software/systemd/man/systemd.service.html
+
 [Unit]
 Description=uStreamer service
-After=network.target
+After=network-online.target
+Wants=network-online.target
+Restart=always
+BindsTo=dev-camera0.device
+After=dev-camera0.device
+
 [Service]
 User=mau
-ExecStart=/usr/bin/ustreamer --desired-fps=10 --host=octolap.local
+# Wait for other services before starting uStreamer. Otherwise uStreamer was starting but not reachable.
+# Taken from https://stackoverflow.com/a/44737570
+ExecStartPre=/bin/sleep 10 
+ExecStart=/usr/bin/ustreamer --desired-fps=10 --host=octolap.local --device /dev/camera0 --device-error-delay 5 --device-timeout 5
+# Not sure if line below is needed
+#DeviceAllow=/dev/camera0
+
 [Install]
 WantedBy=multi-user.target
+

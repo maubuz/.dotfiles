@@ -1,0 +1,8 @@
+# Setup webcam for octoprint and ustreamer systemd service unit
+# Udev docs: https://www.man7.org/linux/man-pages/man7/udev.7.html
+# Based on:
+# - https://wiki.archlinux.org/title/Udev#Setting_static_device_names
+# - https://github.com/pikvm/ustreamer/issues/16
+# - https://www.linux.com/training-tutorials/systemd-services-reacting-change/
+# List camera product & vendor id with lsusb () vendor:0c45, product: 6366
+KERNEL=="video[0-9]*", SUBSYSTEM=="video4linux", SUBSYSTEMS=="usb", ATTRS{idProduct}=="08ca", ATTRS{idVendor}=="046d", SYMLINK+="camera0", TAG+="uaccess", TAG+="systemd", MODE="0660", GROUP="video"
