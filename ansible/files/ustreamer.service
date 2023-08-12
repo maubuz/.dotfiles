@@ -14,7 +14,7 @@ User=mau
 # Wait for other services before starting uStreamer. Otherwise uStreamer was starting but not reachable.
 # Taken from https://stackoverflow.com/a/44737570
 ExecStartPre=/bin/sleep 10 
-ExecStart=/usr/bin/ustreamer --desired-fps=10 --host=octolap.local --device /dev/camera0 --device-error-delay 5 --device-timeout 5
+ExecStart=/usr/bin/ustreamer --desired-fps=10 --host=octolap.local --device /dev/camera0 --device-error-delay 5 --device-timeout 5 --slowdown
 # Not sure if line below is needed
 #DeviceAllow=/dev/camera0
 

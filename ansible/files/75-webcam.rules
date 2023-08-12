@@ -5,4 +5,5 @@
 # - https://github.com/pikvm/ustreamer/issues/16
 # - https://www.linux.com/training-tutorials/systemd-services-reacting-change/
 # List camera product & vendor id with lsusb () vendor:0c45, product: 6366
-KERNEL=="video[0-9]*", SUBSYSTEM=="video4linux", SUBSYSTEMS=="usb", ATTRS{idProduct}=="08ca", ATTRS{idVendor}=="046d", SYMLINK+="camera0", TAG+="uaccess", TAG+="systemd", MODE="0660", GROUP="video"
+KERNEL=="video[0-9]*", SUBSYSTEM=="video4linux", SUBSYSTEMS=="usb", ATTRS{idProduct}=="5805", ATTRS{idVendor}=="0bda", SYMLINK+="camera0", TAG+="uaccess", TAG+="systemd", MODE="0660", GROUP="video"
+

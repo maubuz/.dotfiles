@@ -34,12 +34,22 @@
         owner: root
         group: root
 
-    - name: Activate and enable systemd unit for octoprint
-      systemd:
-        daemon_reload: true
-        enabled: true
-        name: octoprint.service
-        state: restarted
+    - name: Copy udev rule for webcam
+      copy:
+        src: 75-webcam.rules
+        dest: /etc/udev/rules.d/
+        owner: root
+        group: root
+
+    - name: Reload udev rules
+      become: yes
+      command:
+        cmd: udevadm control --reload
+
+    - name: Re-trigger udev rules
+      become: yes
+      command:
+        cmd: udevadm trigger
 
     - name: Copy SystemD unit for uStremer
       copy:
@@ -54,3 +64,11 @@
         enabled: true
         name: ustreamer.service
         state: restarted
+
+    - name: Activate and enable systemd unit for octoprint
+      systemd:
+        daemon_reload: true
+        enabled: true
+        name: octoprint.service
+        state: restarted
+
