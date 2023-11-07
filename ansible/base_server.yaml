@@ -1,0 +1,28 @@
+---
+- name: Setup basic server
+  hosts: servers
+  become: true
+
+  tasks:
+    - name: Update via package manager
+      package:
+        update_cache: true
+
+    - name: Install git
+      package:
+        name: git
+
+    - name: Install xclip as clipboard tool
+      package:
+        name: xclip
+
+    - name: Install avahi for multicast DNS (deb based)
+      package:
+        name: avahi-daemon 
+      when: ansible_distribution in ["Ubuntu", "Debian"]
+
+    - name: Install avahi for multicast DNS (fedora)
+      package:
+        name: avahi
+      when: ansible_distribution == "Fedora"
+

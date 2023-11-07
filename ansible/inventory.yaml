@@ -6,3 +6,9 @@ laptop_servers:
   hosts:
     octolap.local:
 
+servers:
+  hosts:
+    dev.local:
+    octoprint_servers:
+    laptop_servers:
+
