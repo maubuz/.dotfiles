@@ -1,8 +1,6 @@
 -- TODO: Can I also use vim.o? How is vim.opt different from the later?
 local opt = vim.opt
 
-vim.g.mapleader = ";"
-
 -- Most configurations inspired by chris@machine
 -- See https://github.com/LunarVim/Neovim-from-scratch/blob/master/lua/user/options.lua
 opt.expandtab = true
@@ -14,15 +12,15 @@ opt.hidden = true     -- Allow midified unsaved buffers to be hidden
 opt.ignorecase = true                       -- ignore case in search patterns
 opt.mouse = "a"                             -- allow the mouse to be used in neovim
 opt.pumheight = 10                          -- pop up menu height
-opt.splitbelow = true                       -- force all horizontal splits to go below current window
-opt.splitright = true                       -- force all vertical splits to go to the right of current window
-opt.timeoutlen = 500                        -- time to wait for a mapped sequence to complete (in milliseconds)
-opt.cursorline = true
+--opt.splitbelow = true                       -- force all horizontal splits to go below current window
+--opt.splitright = true                       -- force all vertical splits to go to the right of current window
+--opt.timeoutlen = 500                        -- time to wait for a mapped sequence to complete (in milliseconds)
+--opt.cursorline = true
 
 -- Lexplore
-vim.g.netrw_browse_split = 2  -- open file in vertical split
-vim.g.netrw_winsize = 20
-vim.g.netrw_liststyle = 3
+--vim.g.netrw_browse_split = 2  -- open file in vertical split
+--vim.g.netrw_winsize = 20
+--vim.g.netrw_liststyle = 3
 
 -- VimWiki
 -- Unecessary due to defaults but basec on wimwiki's instructions (https://github.com/vimwiki/vimwiki)
