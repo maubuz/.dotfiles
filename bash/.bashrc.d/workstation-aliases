@@ -19,3 +19,13 @@ if type deepl &> /dev/null; then
     }
     echo "Created 'dpl' alias for deepl cli tool"
 fi
+
+# If bat and fzf commands exist, set bat as fzf's default previewer
+if type bat &> /dev/null; then
+    export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
+fi
+
+# fd with fzf to find files
+if type fd &> /dev/null && type fzf &> /dev/null; then
+    export FZF_DEFAULT_COMMAND="fd"
+fi
