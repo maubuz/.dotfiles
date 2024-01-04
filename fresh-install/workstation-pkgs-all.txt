@@ -1,0 +1,5 @@
+fd-find
+git-delta
+fzf
+# Comment here
+bat
