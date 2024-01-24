@@ -25,7 +25,11 @@ if type bat &> /dev/null; then
     export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
 fi
 
-# fd with fzf to find files
+# fzf uses `fd` to find files rather than `find`
 if type fd &> /dev/null && type fzf &> /dev/null; then
     export FZF_DEFAULT_COMMAND="fd"
 fi
+
+# Make it easier to use these
+alias pd=pushd
+alias pod=popd
