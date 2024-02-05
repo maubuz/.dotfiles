@@ -5,10 +5,18 @@
 # fd: simple, fast and user-friendly alternative to 'find', writen in rust
 # https://github.com/sharkdp/fd
 #
-if type fdfind &> /dev/null; then
-    alias fd="fdfind"
-    echo "Setting 'fd' alias for fdfind. By default fd ignores hidden files."
+# fzf uses `fd` to find files rather than `find` (fedora)
+if type fd &> /dev/null && type fzf &> /dev/null; then
+    export FZF_DEFAULT_COMMAND="fd"
 fi
+# (ubuntu uses fdfind pkg)
+if type fdfind &> /dev/null; then
+    alias fd=fdfind
+    if type fzf &> /dev/null; then
+        export FZF_DEFAULT_COMMAND="fdfind"
+    fi
+fi
+
 
 # Cli for Deepl translation: https://www.deepl.com/translator
 # package deepl-cli 0.5.0, installed using pipx on Python 3.11.3
@@ -20,16 +28,20 @@ if type deepl &> /dev/null; then
     echo "Created 'dpl' alias for deepl cli tool"
 fi
 
-# If bat and fzf commands exist, set bat as fzf's default previewer
+# If bat and fzf commands exist, set bat as fzf's default previewer (Fedora)
 if type bat &> /dev/null; then
     export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
 fi
 
-# fzf uses `fd` to find files rather than `find`
-if type fd &> /dev/null && type fzf &> /dev/null; then
-    export FZF_DEFAULT_COMMAND="fd"
+# set alias for batcat (unbuntu) 
+if type batcat &> /dev/null; then
+    alias bat=batcat
+    export FZF_DEFAULT_OPTS="--preview 'batcat --color=always {}'"
 fi
+
 
 # Make it easier to use these
 alias pd=pushd
 alias pod=popd
+
+
