@@ -48,3 +48,5 @@ alias brc="cd ~/.bashrc.d/ && nvim ."
 alias sobrc="source ~/.bashrc"
 alias vi=nvim
 
+alias mp=multipass
+
