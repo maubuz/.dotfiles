@@ -15,7 +15,7 @@ opt.pumheight = 10                          -- pop up menu height
 --opt.splitbelow = true                       -- force all horizontal splits to go below current window
 --opt.splitright = true                       -- force all vertical splits to go to the right of current window
 --opt.timeoutlen = 500                        -- time to wait for a mapped sequence to complete (in milliseconds)
---opt.cursorline = true
+opt.cursorline = true
 
 -- Lexplore
 --vim.g.netrw_browse_split = 2  -- open file in vertical split
