@@ -12,6 +12,13 @@
 			- Switch applications: Alt + Tab
 			- Switch to workspace on left: Super + h
 			- Switch to workspace on right: Super + l
+	1.3 Adjust native Gnome extensions
+		1.3.1 Dash-to-dock
+			- Open Gnome Extentions Manager
+			- Select Ubuntu Dock > Select the "Behaviour" Panel
+			- Disable "Use keyboard shortcuts to activate apps"
+			- Alternatively, use the cli: `for i in {1..9}; do gsettings set org.gnome.shell.keybindings switch-to-application-$i "[]"; done`
+			  - Source: https://github.com/micheleg/dash-to-dock/issues/914
 			
 
 2. Transfer of ssh keys
