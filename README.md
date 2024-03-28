@@ -51,5 +51,13 @@ echo "require('mauvim')" >> ~/.config/nvim/init.lua
 stow -v -t ~/.config/nvim/lua/mauvim mauvim
 ```
 
+### VSCode Settings
+
+1. Install VSCode (snap)
+2. Stow `.dotfiles/Code/settings.json` into `~/.config/Code/User/`
+```
+stow -v -t ~/.config/Code/User Code
+```
+
 
 
