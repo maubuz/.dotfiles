@@ -12,6 +12,10 @@
 			- Switch applications: Alt + Tab
 			- Switch to workspace on left: Super + h
 			- Switch to workspace on right: Super + l
+		1.2.2 Screenshot
+			- Add shortcut for Flameshot (ensure it's installed)
+			`script --command "flameshot gui" /dev/null`
+				- See https://github.com/flameshot-org/flameshot/issues/3365
 	1.3 Adjust native Gnome extensions
 		1.3.1 Dash-to-dock
 			- Open Gnome Extentions Manager

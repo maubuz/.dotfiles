@@ -51,7 +51,7 @@ alias vimrc="cd ~/.config/nvim && nvim ."
 export EDITOR="nvim"
 export VISUAL="nvim"
 
-
+alias gits="git status"
 alias mp=multipass
 alias lg=lazygit
 
