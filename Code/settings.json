@@ -10,4 +10,5 @@
     },
     "vim.leader": "space",
     "vim.easymotion": true,
+    "vim.highlightedyank.enable": true,
 }
