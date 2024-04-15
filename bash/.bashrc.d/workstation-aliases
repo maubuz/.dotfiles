@@ -1,6 +1,21 @@
 #!/bin/bash
 
+# set alias for batcat (unbuntu) 
+if type batcat &> /dev/null; then
+    alias bat=batcat
+fi
 
+
+if type fzf &> /dev/null; then
+    # FZF_OPTS="--bind ?:toggle-preview --preview-window 60%"
+    FZF_OPTS="--bind '?:toggle-preview,alt-up:preview-half-page-up,alt-down:preview-half-page-down' --preview-window 60%"
+    # If bat and fzf commands exist, set bat as fzf's default previewer (Fedora)
+    if type batcat &> /dev/null; then
+        FZF_OPTS="$FZF_OPTS --preview 'batcat --color=always {}'"
+    fi
+    export FZF_DEFAULT_OPTS="$FZF_OPTS" 
+    echo $FZF_DEFAULT_OPTS
+fi
 
 # fd: simple, fast and user-friendly alternative to 'find', writen in rust
 # https://github.com/sharkdp/fd
@@ -27,18 +42,6 @@ if type deepl &> /dev/null; then
     }
     echo "Created 'dpl' alias for deepl cli tool"
 fi
-
-# If bat and fzf commands exist, set bat as fzf's default previewer (Fedora)
-if type bat &> /dev/null; then
-    export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
-fi
-
-# set alias for batcat (unbuntu) 
-if type batcat &> /dev/null; then
-    alias bat=batcat
-    export FZF_DEFAULT_OPTS="--preview 'batcat --color=always {}'"
-fi
-
 
 # Make it easier to use these
 alias pd=pushd
