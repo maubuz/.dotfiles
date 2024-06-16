@@ -14,7 +14,6 @@ if type fzf &> /dev/null; then
         FZF_OPTS="$FZF_OPTS --preview 'batcat --color=always {}'"
     fi
     export FZF_DEFAULT_OPTS="$FZF_OPTS" 
-    echo $FZF_DEFAULT_OPTS
 fi
 
 # fd: simple, fast and user-friendly alternative to 'find', writen in rust
