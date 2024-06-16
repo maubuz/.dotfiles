@@ -4,6 +4,7 @@
 
     "vim.useSystemClipboard": true,
     "vim.handleKeys": {
+        "<C-k>": false,
         "<C-d>": true,
         "<C-s>": false,
         "<C-z>": false
@@ -11,4 +12,20 @@
     "vim.leader": "space",
     "vim.easymotion": true,
     "vim.highlightedyank.enable": true,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<C-w>", "w"],
+            "commands": [
+                "workbench.action.closeActiveEditor",
+            ],
+            "silent": true
+        },
+        {
+            "before": ["<C-w>", "<C-w>"],
+            "commands": [
+                "workbench.action.closeActiveEditor",
+            ],
+            "silent": true
+        }
+    ]
 }
