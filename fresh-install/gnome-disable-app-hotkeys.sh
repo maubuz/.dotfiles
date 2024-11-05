@@ -8,3 +8,8 @@ for i in {1..9}; do
   gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-${i}" "['<Super><Shift>${i}']"
   gsettings set "org.gnome.shell.extensions.dash-to-dock" "app-hotkey-${i}" "[]"
 done
+
+### Additional Steps
+# 1. Open Gnome system extension 'Ubuntu Dock'
+# 2. In 'Behaviour' Dock, uncheck 'Use keyboard shortcuts to activate apps'
+
