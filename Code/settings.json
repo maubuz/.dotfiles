@@ -7,7 +7,8 @@
         "<C-k>": false,
         "<C-d>": true,
         "<C-s>": false,
-        "<C-z>": false
+        "<C-z>": false,
+        "<C-b>": false,
     },
     "vim.leader": "space",
     "vim.easymotion": true,
@@ -35,5 +36,6 @@
         "editor.defaultFormatter": "foxundermoon.shell-format"
     },
     "python.analysis.typeCheckingMode": "standard",
-    "ruff.lineLength": 100
+    "ruff.lineLength": 100,
+    "workbench.sideBar.location": "right"
 }
