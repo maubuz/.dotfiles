@@ -48,6 +48,8 @@ alias pod=popd
 
 alias brc="cd ~/.bashrc.d/ && nvim ."
 alias sobrc="source ~/.bashrc"
+alias mauvim='NVIM_APPNAME="mauvim" nvim'
+alias mvi='NVIM_APPNAME="mauvim" nvim'
 alias vi=nvim
 alias vimrc="cd ~/.config/nvim && nvim ."
 export EDITOR="nvim"
@@ -55,6 +57,7 @@ export VISUAL="nvim"
 
 alias gits="git status"
 alias mp=multipass
+alias lx=lxc
 alias lg=lazygit
 
 
