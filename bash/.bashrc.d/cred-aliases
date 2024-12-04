@@ -1,0 +1,4 @@
+#!/bin/bash
+
+alias cue3="cd ~/Canonical/cue-03-server-sme/"
+alias cue2="cd ~/Canonical/cue-02-server-sme/"
