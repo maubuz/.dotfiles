@@ -59,5 +59,12 @@ stow -v -t ~/.config/nvim/lua/mauvim mauvim
 stow -v -t ~/.config/Code/User Code
 ```
 
+### Startship CLI Prompt
 
+1. Install Starship
+2. Stow `.dotfiles/startship` into `~/.config`
+
+```sh
+stow -vt ~/.config starship
+```
 
