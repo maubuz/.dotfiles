@@ -34,3 +34,26 @@
 6. Clone maubuz/mau-kmonad
     6.1 Follow instructions in repository (worked in Ubuntu 23.10)
 
+7. Browser customization
+    7.1 Firefox
+		7.1.1 Install extensions
+			- Tab Session Manager
+			- Copy as Markdown
+			- Bitwarden
+			- uBlock Origin
+			- Privacy Badger
+			- Dark Reader
+			- Vimium
+    7.2 Brave
+		7.2.1 Install snap
+		7.2.2 Install extensions
+			- Tab Session Manager
+			- Copy Title and URL as Markdown Style
+			    - Activate the extension: Alt + Shift + C
+			- Bitwarden
+			- uBlock Origin
+			- Privacy Badger
+			- Dark Reader
+			- Vimium
+			- Tab to Window/Popup - Keyboard Shortcut
+
