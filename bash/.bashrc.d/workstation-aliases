@@ -31,7 +31,6 @@ if type fdfind &> /dev/null; then
     fi
 fi
 
-
 # Cli for Deepl translation: https://www.deepl.com/translator
 # package deepl-cli 0.5.0, installed using pipx on Python 3.11.3
 #
@@ -40,6 +39,10 @@ if type deepl &> /dev/null; then
         deepl --fr en --to fr -s <<<"$1"
     }
     echo "Created 'dpl' alias for deepl cli tool"
+fi
+
+if flatpak info com.ultimaker.cura &> /dev/null; then
+    alias cura="flatpak run com.ultimaker.cura"
 fi
 
 # Make it easier to use these
