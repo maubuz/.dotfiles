@@ -12,9 +12,15 @@ stow -v -R -t <target_directory> <dotfile_directory>
 
 ## Instructions
 
-1. Install GNU Stow
-2. Clone this repo to home directory `~`
-3. CD into repo clone
+### Fresh Machine Install
+
+Follow instructions in [maubuz/ansible-homelab](https://github.com/maubuz/ansible-homelab) to install basic packages and services.
+
+### Clone & Bash aliases
+
+1. Clone this repo to home directory `~`
+2. CD into repo clone
+3. Install GNU Stow if needed. Check with `stow --version`
 4. Create symbolic link between a folder in the repo and the home directory.
     ```sh
     stow bash
@@ -22,15 +28,19 @@ stow -v -R -t <target_directory> <dotfile_directory>
     - This will link all files and folders inside `.dotfiles/bash` to `~/` (the parent directory of `.dotfiles/`.
     - Stow dotfile directories to other locations using the `-t` argument
 
+### Kmonad & Keyboard
+
+_Known to work on Ubuntu 25.04_
+1. If `stow bash` was used above, kmonad alias file already exists in `~/.bashrc.d/kmonad-aliases`
+2. Follow instructions in [maubuz/mau-kmonad](https://github.com/maubuz/mau-kmonad)
+
 ### Neovim w/ Kickstart
 
 I'm currently using [neovim kickstart](https://github.com/nvim-lua/kickstart.nvim) to setup configuration.
 The only modification required for kickstart to use these dotfiles is to append `echo "required('mauvim')"` to `~/.config/nvim/init.lua`:
 
-
-
 1. Install neovim
-2. Install C compiler tooling
+2. Install C compiler tooling (included in [maubuz/ansible-homelab](https://github.com/maubuz/ansible-homelab))
 ```sh
 sudo apt install build-essential
 ```
