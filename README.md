@@ -36,7 +36,7 @@ _Known to work on Ubuntu 25.04_
 
 ### Neovim w/ Kickstart
 
-I'm currently using [neovim kickstart](https://github.com/nvim-lua/kickstart.nvim) to setup configuration.
+I'm currently using [kickstart-modular.nvim](https://github.com/dam9000/kickstart-modular.nvim) to setup configuration.
 The only modification required for kickstart to use these dotfiles is to append `echo "required('mauvim')"` to `~/.config/nvim/init.lua`:
 
 1. Install neovim
@@ -47,7 +47,7 @@ sudo apt install build-essential
 
 3. Download kickstart:
 ```sh
-git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+git clone https://github.com/dam9000/kickstart-modular.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
 4. Create personal configuration directory and include it in main `init.lua`
