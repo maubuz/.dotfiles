@@ -33,6 +33,9 @@
 	    - Privacy Badger
             - Dark Reader
             - Vimium
+	3. Didable `Alt` key shortcut to open menu
+	    - See https://superuser.com/a/1752405
+	    - about:config > ui.key.menuAccessKey = 17
 
     2. Brave
 	1. Install deb (see ansible-homelab repo)
