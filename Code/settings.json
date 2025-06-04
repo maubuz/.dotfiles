@@ -37,5 +37,6 @@
     },
     "python.analysis.typeCheckingMode": "standard",
     "ruff.lineLength": 100,
-    "workbench.sideBar.location": "right"
+    "workbench.sideBar.location": "right",
+    "git.confirmSync": false
 }
