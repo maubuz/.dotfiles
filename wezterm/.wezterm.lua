@@ -127,24 +127,45 @@ config.keys = {
 			)
 		end),
 	},
-	-- Resize panes
+	-- Move between panes
 	{
-		key = "H",
+		key = "L",
 		mods = mau_mod,
-		action = act.AdjustPaneSize({ "Left", 5 }),
-	},
-	{
-		key = "J",
-		mods = mau_mod,
-		action = act.AdjustPaneSize({ "Down", 5 }),
+		action = act.ActivatePaneDirection("Right"),
 	},
 	{
 		key = "K",
 		mods = mau_mod,
+		action = act.ActivatePaneDirection("Up"),
+	},
+	{
+		key = "J",
+		mods = mau_mod,
+		action = act.ActivatePaneDirection("Down"),
+	},
+	{
+		key = "H",
+		mods = mau_mod,
+		action = act.ActivatePaneDirection("Left"),
+	},
+	-- Resize panes
+	{
+		key = "LeftArrow",
+		mods = mau_mod,
+		action = act.AdjustPaneSize({ "Left", 5 }),
+	},
+	{
+		key = "DownArrow",
+		mods = mau_mod,
+		action = act.AdjustPaneSize({ "Down", 5 }),
+	},
+	{
+		key = "UpArrow",
+		mods = mau_mod,
 		action = act.AdjustPaneSize({ "Up", 5 }),
 	},
 	{
-		key = "L",
+		key = "RightArrow",
 		mods = mau_mod,
 		action = act.AdjustPaneSize({ "Right", 5 }),
 	},
