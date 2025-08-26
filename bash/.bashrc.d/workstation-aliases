@@ -1,32 +1,31 @@
 #!/bin/bash
 
-# set alias for batcat (unbuntu) 
-if type batcat &> /dev/null; then
+# set alias for batcat (unbuntu)
+if type batcat &>/dev/null; then
     alias bat=batcat
 fi
 
-
-if type fzf &> /dev/null; then
+if type fzf &>/dev/null; then
     # FZF_OPTS="--bind ?:toggle-preview --preview-window 60%"
     FZF_OPTS="--bind '?:toggle-preview,alt-up:preview-half-page-up,alt-down:preview-half-page-down' --preview-window 60%"
     # If bat and fzf commands exist, set bat as fzf's default previewer (Fedora)
-    if type batcat &> /dev/null; then
+    if type batcat &>/dev/null; then
         FZF_OPTS="$FZF_OPTS --preview 'batcat --color=always {}'"
     fi
-    export FZF_DEFAULT_OPTS="$FZF_OPTS" 
+    export FZF_DEFAULT_OPTS="$FZF_OPTS"
 fi
 
 # fd: simple, fast and user-friendly alternative to 'find', writen in rust
 # https://github.com/sharkdp/fd
 #
 # fzf uses `fd` to find files rather than `find` (fedora)
-if type fd &> /dev/null && type fzf &> /dev/null; then
+if type fd &>/dev/null && type fzf &>/dev/null; then
     export FZF_DEFAULT_COMMAND="fd"
 fi
 # (ubuntu uses fdfind pkg)
-if type fdfind &> /dev/null; then
+if type fdfind &>/dev/null; then
     alias fd=fdfind
-    if type fzf &> /dev/null; then
+    if type fzf &>/dev/null; then
         export FZF_DEFAULT_COMMAND="fdfind"
     fi
 fi
@@ -34,14 +33,14 @@ fi
 # Cli for Deepl translation: https://www.deepl.com/translator
 # package deepl-cli 0.5.0, installed using pipx on Python 3.11.3
 #
-if type deepl &> /dev/null; then
-    dpl(){
+if type deepl &>/dev/null; then
+    dpl() {
         deepl --fr en --to fr -s <<<"$1"
     }
     echo "Created 'dpl' alias for deepl cli tool"
 fi
 
-if flatpak info com.ultimaker.cura &> /dev/null; then
+if flatpak info com.ultimaker.cura &>/dev/null; then
     alias cura="flatpak run com.ultimaker.cura"
 fi
 
@@ -62,5 +61,3 @@ alias gits="git status"
 alias mp=multipass
 alias lx=lxc
 alias lg=lazygit
-
-
