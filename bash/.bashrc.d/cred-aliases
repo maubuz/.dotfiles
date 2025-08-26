@@ -1,6 +1,10 @@
 #!/bin/bash
 
-alias cue1="cd ~/Canonical/cue-01-linux-sme/"
-alias cue2="cd ~/Canonical/cue-02-desktop-sme/"
+## Exams
 alias cue3="cd ~/Canonical/cue-03-server-sme/"
+alias cue2="cd ~/Canonical/cue-02-desktop-sme/"
+alias cue1="cd ~/Canonical/cue-01-linux-sme/"
 alias ta="cd ~/Canonical/trueability-integration-canonical/"
+
+## Tooling
+alias post="cd ~/Canonical/ && posting --collection posting-collections"
