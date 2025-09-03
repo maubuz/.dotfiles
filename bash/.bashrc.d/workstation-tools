@@ -1,5 +1,26 @@
 #!/bin/bash
 
+# Use fzf to load an ssh key with ssh-add (maubuz Aug 2025)
+function add-key() {
+    local key
+    key=$(find ~/.ssh -type f -name 'id_*' -not -name '*.pub' | fzf --prompt="Select SSH key for to ssh-add: " --height=40% --layout=reverse --border)
+    if [[ -n "$key" ]]; then
+        # Verify that ssh-agent is running and start it if needed
+        if ! [[ -S "$SSH_AUTH_SOCK" ]]; then
+            eval "$(ssh-agent -s)"
+            echo "SSH agent started."
+        fi
+        # Check if ssh is already loaded
+        if ssh-add -l | grep -q "$(ssh-keygen -lf "$key" | awk '{print $2}')"; then
+            echo "Key is already loaded: $key"
+        else
+            ssh-add "$key"
+        fi
+    else
+        echo "No key selected."
+    fi
+}
+
 # CD into file directory with ripgrep and fzf (maubuz Aug 2025)
 # Taken from https://github.com/junegunn/fzf/blob/master/ADVANCED.md#switching-between-ripgrep-mode-and-fzf-mode
 function cdf() {
