@@ -225,4 +225,19 @@ wezterm.on("trigger-vim-with-scrollback", function(window, pane)
 	os.remove(name)
 end)
 
+-- Config wezterm SSH domains
+-- Copied from https://wezterm.org/multiplexing.html
+-- Also see: https://github.com/wezterm/wezterm/discussions/3480 for details on how to use it
+config.ssh_domains = {
+	{
+		-- This name identifies the domain
+		name = "t7810",
+		-- The hostname or address to connect to. Will be used to match settings
+		-- from your ssh config file
+		remote_address = "100.93.199.87",
+		-- The username to use on the remote host
+		username = "mau",
+	},
+}
+
 return config
