@@ -1,2 +1,7 @@
 [gcloud]
 disabled = true
+
+[directory]
+truncation_length = 5
+truncation_symbol = "…/"
+# repo_root_style = 'underline white'

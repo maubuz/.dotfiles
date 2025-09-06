@@ -73,7 +73,6 @@ stow -v -t ~/.config/Code/User Code
 
 1. Install Starship
 2. Stow `.dotfiles/startship` into `~/.config`
-
 ```sh
 stow -vt ~/.config starship
 ```
