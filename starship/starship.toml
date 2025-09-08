@@ -4,4 +4,5 @@ disabled = true
 [directory]
 truncation_length = 5
 truncation_symbol = "…/"
-# repo_root_style = 'underline white'
+truncate_to_repo = false
+repo_root_style = 'bold purple'
