@@ -7,10 +7,11 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 local act = wezterm.action
 
+config.font_size = 10.0
+
 -- Apply config choices
 --
 config.leader = { key = "Alt", mods = "SHIFT" }
-
 local mau_mod = "SHIFT|ALT"
 
 config.keys = {
