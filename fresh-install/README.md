@@ -14,14 +14,20 @@
    - Add shortcut for Flameshot (ensure it's installed)
    `script --command "flameshot gui" /dev/null`
     - See <https://github.com/flameshot-org/flameshot/issues/3365>
+  1.2.3 Disable disable `Ctrl+Shift+U` (Unicode input)
+   - Based on https://superuser.com/questions/358749/how-to-disable-ctrlshiftu
+   - Go to Language Support on System Settings and change the Keyboard input method system to none
+   - TODO: test cli way: `gsettings set org.freedesktop.ibus.panel.emoji unicode-hotkey "@as []"`
+
  1.3 Adjust native Gnome extensions
   1.3.1 Dash-to-dock
-   - Open Gnome Extentions Manager
-   - Select Ubuntu Dock > Select the "Behaviour" Panel
-   - Disable "Use keyboard shortcuts to activate apps"
-   - Alternatively, use the cli: `for i in {1..9}; do gsettings set org.gnome.shell.keybindings switch-to-application-$i "[]"; done`
-     - Source: <https://github.com/micheleg/dash-to-dock/issues/914>
-   
+
+- Open Gnome Extentions Manager
+- Select Ubuntu Dock > Select the "Behaviour" Panel
+- Disable "Use keyboard shortcuts to activate apps"
+- Alternatively, use the cli: `for i in {1..9}; do gsettings set org.gnome.shell.keybindings switch-to-application-$i "[]"; done`
+  - Source: <https://github.com/micheleg/dash-to-dock/issues/914>
+
 2. Transfer of ssh keys
 
 3. Clone maubuz/ansible-homelab
