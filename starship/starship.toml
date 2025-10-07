@@ -6,3 +6,6 @@ truncation_length = 5
 truncation_symbol = "…/"
 truncate_to_repo = false
 repo_root_style = 'bold purple'
+
+[hostname]
+ssh_only = false
