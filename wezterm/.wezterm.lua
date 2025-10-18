@@ -4,7 +4,9 @@
 local wezterm = require("wezterm")
 
 -- This will hold the configuration.
-local config = wezterm.config_builder()
+-- Mau, 2025-10-17: config_builder broke osc52 clipboard on my setup, using a plain table instead
+-- local config = wezterm.config_builder()
+local config = {}
 local act = wezterm.action
 
 config.font_size = 10.0
