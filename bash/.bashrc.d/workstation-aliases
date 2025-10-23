@@ -58,6 +58,7 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 alias gits="git status"
-alias mp=multipass
 alias lx=lxc
 alias lg=lazygit
+
+alias wez=wezterm
