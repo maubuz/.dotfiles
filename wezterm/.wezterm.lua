@@ -9,6 +9,10 @@ local wezterm = require("wezterm")
 local config = {}
 local act = wezterm.action
 
+-- Fix for wezterm failing to start on Ubuntu 25.10
+-- Ref: https://github.com/wezterm/wezterm/issues/5604
+config.enable_wayland = false
+
 config.font_size = 10.0
 
 -- Apply config choices
