@@ -183,6 +183,31 @@ config.keys = {
 		mods = mau_mod,
 		action = act.ScrollByPage(1),
 	},
+	-- Workspace management
+	--
+	-- Show the launcher in fuzzy selection mode and have it list all workspaces
+	-- and allow activating one.
+	{
+		key = ")",
+		mods = mau_mod,
+		action = act.ShowLauncherArgs({
+			flags = "FUZZY|WORKSPACES",
+		}),
+	},
+	{ key = ">", mods = mau_mod, action = act.SwitchWorkspaceRelative(1) },
+	{ key = "<", mods = mau_mod, action = act.SwitchWorkspaceRelative(-1) },
+	{
+		key = "R",
+		mods = mau_mod,
+		action = act.PromptInputLine({
+			description = "Enter new workspace name:",
+			action = wezterm.action_callback(function(window, pane, line)
+				if line then
+					wezterm.mux.rename_workspace(window:active_workspace(), line)
+				end
+			end),
+		}),
+	},
 	-- Keymap for 'Open entire scrollback and visible area of the active pane in neovim'
 	-- See function below
 	-- Ref: https://wezterm.org/config/lua/wezterm/on.html?h=open+editor#predefined-events
@@ -192,6 +217,11 @@ config.keys = {
 		action = act.EmitEvent("trigger-vim-with-scrollback"),
 	},
 }
+
+-- Update right status to show the active workspace name and window number
+wezterm.on("update-right-status", function(window, pane)
+	window:set_right_status(window:active_workspace() .. " | w:" .. window:window_id())
+end)
 
 -- Open entire scrollback and visible area of the active pane in neovim
 -- Ref: https://wezterm.org/config/lua/wezterm/on.html?h=open+editor#predefined-events
