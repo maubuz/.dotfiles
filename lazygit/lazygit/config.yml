@@ -1,0 +1,6 @@
+---
+git:
+    paging:
+        # Requires the installation of each tool (apt install delta or snap install diff-so-fancy)
+        # pager: delta --dark --paging=never
+        pager: diff-so-fancy

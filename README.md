@@ -77,3 +77,11 @@ stow -v -t ~/.config/Code/User Code
 stow -vt ~/.config starship
 ```
 
+### Lazygit
+
+1. Install lazygit
+2. Stow `.dotfiles/lazygit` into `~/.config`
+```sh
+stow -vt ~/.config lazygit
+```
+
