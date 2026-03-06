@@ -1,9 +1,10 @@
 #!/bin/bash
 
 ## Exams
-alias cue3="cd ~/Canonical/cue-03-server-sme/"
-alias cue2="cd ~/Canonical/cue-02-desktop-sme/"
-alias cue1="cd ~/Canonical/cue-01-linux-sme/"
+alias sa3="cd ~/Canonical/cue-03-server-sme/"
+alias sa2="cd ~/Canonical/cue-02-desktop-sme/"
+alias sa1="cd ~/Canonical/cue-01-linux-sme/"
+alias sa4="cd ~/Canonical/sa4-systems/"
 alias ta="cd ~/Canonical/trueability-integration-canonical/"
 
 ## Tooling
