@@ -20,12 +20,12 @@ config.font_size = 10.0
 config.leader = { key = "Alt", mods = "SHIFT" }
 local mau_mod = "SHIFT|ALT"
 
-config.keys = {
-	-- Pane management
+config.keys = {-- Pane management
 	{
 		key = "w",
 		mods = mau_mod,
-		action = act.CloseCurrentPane({ confirm = true }),
+		action = act.CloseCurrentPane({ confirm = true,
+  {key="Enter", mods="SHIFT", action=wezterm.action{SendString="\x1b\r"}},}),
 	},
 	{
 		key = "z",
