@@ -15,6 +15,10 @@ config.enable_wayland = false
 
 config.font_size = 10.0
 
+-- (Apr 2026) Try to fix split vertical scroll inside neovim's left split plane.
+-- Also requires wezterm's terminfo data to be installed. See https://wezterm.org/config/lua/config/term.html?h=term
+config.term = "wezterm"
+
 -- Apply config choices
 --
 config.leader = { key = "Alt", mods = "SHIFT" }
