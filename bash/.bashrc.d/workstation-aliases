@@ -61,3 +61,5 @@ alias lx=lxc
 alias lg=lazygit
 
 alias wez=wezterm
+
+alias cura=/home/mau/.local/bin/UltiMaker-Cura-5.11.0-linux-X64.AppImage
