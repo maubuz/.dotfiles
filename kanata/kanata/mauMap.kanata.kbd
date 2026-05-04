@@ -1,0 +1,106 @@
+;; ============================================================================
+;; Kanata config migrated from kmonad mauMap.kbd
+;; Source: https://github.com/maubuz/mau-kmonad/blob/main/user/mauedu/mauMap.kbd
+;;
+;; Run with:
+;;   sudo kanata --cfg mauMap.kanata.kbd
+;; (or follow https://github.com/jtroo/kanata/wiki/Avoid-using-sudo-on-Linux)
+;; ============================================================================
+
+(defcfg
+  ;; --- Input / Output ---------------------------------------------------------
+  ;; Linux: Dell built-in laptop
+  linux-dev /dev/input/by-path/platform-i8042-serio-0-event-kbd
+
+  ;; Logitech G410
+  ;; linux-dev /dev/input/by-id/usb-Logitech_Gaming_Keyboard_G410_018836623538-event-kbd
+
+  ;; Lenovo keyboard (Hugh's)
+  ;; linux-dev /dev/input/by-id/usb-LITE-ON_Technology_USB_NetVista_Full_Width_Keyboard.-event-kbd
+
+  ;; For Windows, replace the linux-dev line above with:
+  ;; windows-altgr add-lctl-release      ;; only if you use AltGr
+  ;; (kanata auto-detects keyboards on Windows)
+
+  ;; Name of the virtual output device (replaces kmonad's uinput-sink name)
+  linux-output-device-name "My Kanata output"
+
+  ;; Process keys not in defsrc too. Recommended for tap-hold-release timing.
+  process-unmapped-keys yes
+
+  ;; -----------------------------------------------------------------------------
+  ;; NOTE 1 (compose key):
+  ;; Kanata has no equivalent of kmonad's
+  ;;     output (uinput-sink "..." "<shell command>")
+  ;; nor of `cmp-seq ralt` / `cmp-seq-delay 5`.
+  ;; Run compose-key sequences on GNOME Wayland:
+  ;; gsettings set org.gnome.desktop.input-sources xkb-options "['compose:ralt']"
+  ;;
+  ;; NOTE 2 (allow-cmd):
+  ;; Kanata's `cmd` action only exists when the binary was compiled with
+  ;; `--features cmd`. The default build cannot run shell commands, so this
+  ;; matches your kmonad `allow-cmd false` setting without any extra option.
+  ;; -----------------------------------------------------------------------------
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '
+       z    x    c    v    b    n    m    ,    .    /
+  spc
+)
+
+;; --- Simple action aliases (1:1 with your kmonad defalias) -------------------
+(defalias
+  cp  C-c
+  pt  C-v
+  cut C-x
+  all C-a
+  cwn A-f4
+  ctb C-w
+  un  C-z
+  re  C-y
+  mnu S-f10
+  cHm C-home
+
+  arr (layer-toggle arrows)
+)
+
+;; --- Home row mods -----------------------------------------------------------
+;; kmonad : (tap-hold-next-release TIMEOUT TAP HOLD)
+;; kanata : (tap-hold-release TAP-TIME HOLD-TIME TAP HOLD)
+;; We pass the same value to both timeouts to mimic the single-timeout kmonad
+;; semantics most closely. You can later split them or migrate to chordsv2.
+(defalias
+  m_a (tap-hold-release 180 180 a lmet)
+  a_s (tap-hold-release 160 160 s lalt)
+  c_d (tap-hold-release 160 160 d rctl)
+  s_f (tap-hold-release 130 130 f rsft)
+  s_j (tap-hold-release 130 130 j rsft)
+  c_k (tap-hold-release 160 160 k rctl)
+  a_l (tap-hold-release 160 160 l ralt)
+  m_; (tap-hold-release 180 180 ; rmet)
+  s_1 (tap-hold-release 160 160 spc @arr)
+)
+
+(deflayer homeMods
+  grv  1    2    3    4    5    6    7    8    9    0    -    =
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  esc  @m_a @a_s @c_d @s_f g    h    @s_j @c_k @a_l @m_; '
+       z    x    c    v    b    n    m    ,    .    /
+  @s_1
+)
+
+(deflayer arrows
+  _    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  _    _    @ctb @cwn _    @cHm cmps pgup up   pgdn _    _    _    _
+  _    @all _    _    _    _    home left down rght end  _
+       @un  @cut @cp  @pt  c    bspc del  @un  @re  _
+  _
+)
+
+;; If `cmps` is not recognized as the compose key on your kanata version,
+;; you can replace it with a one-shot RAlt tap (since RAlt is your compose
+;; key per `compose:ralt`):
+;;     (deflayer arrows ... ralt ... )

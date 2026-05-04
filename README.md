@@ -34,6 +34,24 @@ _Known to work on Ubuntu 25.04_
 1. If `stow bash` was used above, kmonad alias file already exists in `~/.bashrc.d/kmonad-aliases`
 2. Follow instructions in [maubuz/mau-kmonad](https://github.com/maubuz/mau-kmonad)
 
+### Kanata & Keyboard
+
+_Known to work on Ubuntu 24.04_
+
+Migration target from kmonad. Runs as a manually-started user-mode systemd
+service.
+
+1. Install kanata binary via `ansible-homelab/workstation/11_kanata.sh`. The script creates `~/.config/kanata/` but leaves the config file to stow.
+2. Log out and back in so `input` and `uinput` group membership applies.
+3. Stow `.dotfiles/kanata` into `~/.config`:
+    ```sh
+    stow -vt ~/.config kanata
+    ```
+4. Start the service:
+    ```sh
+    systemctl --user start kanata.service
+    ```
+
 ### Neovim w/ Kickstart
 
 I'm currently using [kickstart-modular.nvim](https://github.com/dam9000/kickstart-modular.nvim) to setup configuration.
