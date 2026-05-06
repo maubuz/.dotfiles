@@ -195,6 +195,21 @@ config.keys = {-- Pane management
 		mods = mau_mod,
 		action = act.ScrollByPage(1),
 	},
+	-- Push visible content into scrollback, leaving a blank screen.
+	-- inject_output writes bytes as terminal *output* (not stdin), so the
+	-- shell never sees them and no prompts echo. The newlines scroll content
+	-- into scrollback the same way normal output would. Then Ctrl-L asks the
+	-- foreground program to redraw a fresh prompt at the top.
+	-- Note: inject_output works on local panes only, not multiplexer panes.
+	{
+		key = "s",
+		mods = mau_mod,
+		action = wezterm.action_callback(function(window, pane)
+			local rows = pane:get_dimensions().viewport_rows
+			pane:inject_output(string.rep("\n", rows))
+			window:perform_action(act.SendKey({ key = "l", mods = "CTRL" }), pane)
+		end),
+	},
 	-- Workspace management
 	--
 	-- Show the launcher in fuzzy selection mode and have it list all workspaces
