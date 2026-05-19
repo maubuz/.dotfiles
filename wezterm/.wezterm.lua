@@ -11,13 +11,13 @@ local act = wezterm.action
 
 -- Fix for wezterm failing to start on Ubuntu 25.10
 -- Ref: https://github.com/wezterm/wezterm/issues/5604
-config.enable_wayland = false
+-- config.enable_wayland = false
 
 config.font_size = 10.0
 
 -- (Apr 2026) Try to fix split vertical scroll inside neovim's left split plane.
 -- Also requires wezterm's terminfo data to be installed. See https://wezterm.org/config/lua/config/term.html?h=term
-config.term = "wezterm"
+-- config.term = "wezterm"
 
 -- Apply config choices
 --
