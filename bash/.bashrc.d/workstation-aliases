@@ -63,3 +63,9 @@ alias lg=lazygit
 alias wez=wezterm
 
 alias cura=/home/mau/.local/bin/UltiMaker-Cura-5.11.0-linux-X64.AppImage
+
+alias oc="opencode --port"
+alias ocrc="cd ~/.config/opencode/ && nvim ."
+alias ocw="opencode web --hostname t14.snowy-yo.ts.net --port 4567"
+
+alias copilot-usage="gh api /copilot_internal/user --jq '.quota_snapshots.premium_interactions'"
