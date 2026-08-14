@@ -9,3 +9,4 @@ alias ta="cd ~/Canonical/trueability-integration-canonical/"
 
 ## Tooling
 alias post="cd ~/Canonical/ && posting --collection posting-collections"
+alias tavpn="nordvpn connect Toronto"
