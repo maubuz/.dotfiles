@@ -65,3 +65,31 @@ gce() {
     fi
     git commit --allow-empty -m "$*"
 }
+
+git-find-ancestors() {
+    if [ $# -ne 2 ]; then
+        echo "Usage: common_ancestors <branch1> <branch2>" >&2
+        return 1
+    fi
+
+    local b1="$1" b2="$2"
+    local bases
+    bases="$(git merge-base --all "$b1" "$b2" 2>/dev/null)"
+
+    if [ -z "$bases" ]; then
+        echo "No common ancestor found between '$b1' and '$b2'." >&2
+        return 1
+    fi
+
+    echo "Common ancestor(s) between '$b1' and '$b2':"
+    echo
+    local base
+    while IFS= read -r base; do
+        printf "  %s  " "$(git rev-parse --short "$base")"
+        git show -s --format="%ci  %s" "$base"
+    done <<<"$bases"
+
+    echo
+    echo "Divergence graph:"
+    git log --graph --oneline --left-right --boundary "$b1...$b2"
+}
