@@ -2,14 +2,17 @@
 ;; Kanata config migrated from kmonad mauMap.kbd
 ;; Source: https://github.com/maubuz/mau-kmonad/blob/main/user/mauedu/mauMap.kbd
 ;;
-;; Run with:
-;;   sudo kanata --cfg mauMap.kanata.kbd
-;; (or follow https://github.com/jtroo/kanata/wiki/Avoid-using-sudo-on-Linux)
+;;
+;; Stowed to ~/.config/kanata/ and run without root as a systemd user service:
+;;   systemctl --user start kanata.service
+;; Validate before restarting:
+;;   kanata --cfg ~/.config/kanata/mauMap.kanata.kbd --check
+;; Install and troubleshooting: ansible-homelab/workstation/11_kanata.md
 ;; ============================================================================
 
 (defcfg
   ;; --- Input / Output ---------------------------------------------------------
-  ;; Linux: Dell built-in laptop
+  ;; Linux: ThinkPad T14 built-in keyboard
   linux-dev /dev/input/by-path/platform-i8042-serio-0-event-kbd
 
   ;; Logitech G410
@@ -33,8 +36,12 @@
   ;; Kanata has no equivalent of kmonad's
   ;;     output (uinput-sink "..." "<shell command>")
   ;; nor of `cmp-seq ralt` / `cmp-seq-delay 5`.
-  ;; Run compose-key sequences on GNOME Wayland:
-  ;; gsettings set org.gnome.desktop.input-sources xkb-options "['compose:ralt']"
+  ;; The arrows layer emits `cmps` (KEY_COMPOSE) instead, but that keycode is
+  ;; aliased to <MENU>, which the default layout binds to Menu rather than
+  ;; Multi_key — so it does nothing until an xkb option says otherwise:
+  ;;   gsettings set org.gnome.desktop.input-sources xkb-options "['lv3:ralt_alt', 'compose:menu']"
+  ;; compose:menu (not compose:ralt) keeps Right Alt free as the level-3 shift
+  ;; used for accented characters. 11_kanata.sh applies this automatically.
   ;;
   ;; NOTE 2 (allow-cmd):
   ;; Kanata's `cmd` action only exists when the binary was compiled with
@@ -100,7 +107,6 @@
   _
 )
 
-;; If `cmps` is not recognized as the compose key on your kanata version,
-;; you can replace it with a one-shot RAlt tap (since RAlt is your compose
-;; key per `compose:ralt`):
-;;     (deflayer arrows ... ralt ... )
+;; `cmps` above emits KEY_COMPOSE and needs the `compose:menu` xkb option to do
+;; anything — see NOTE 1 in defcfg. Test with: hold spc, tap the cmps position,
+;; then type ' e  -> should produce é.
