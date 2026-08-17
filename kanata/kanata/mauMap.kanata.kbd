@@ -32,16 +32,29 @@
   process-unmapped-keys yes
 
   ;; -----------------------------------------------------------------------------
-  ;; NOTE 1 (compose key):
+  ;; NOTE 1 (Menu key, and why no xkb options are needed):
+  ;; This config runs on a stock GNOME desktop:
+  ;;   org.gnome.desktop.input-sources xkb-options  ->  []   (the Ubuntu default)
+  ;;
+  ;; The arrows layer emits `cmps` on the `y` position. Despite the name that is
+  ;; evdev KEY_COMPOSE (127), which xkb aliases to <MENU>, and the stock keymap
+  ;; binds it to the Menu keysym — so it opens the context menu with no
+  ;; configuration at all. Confirm with:
+  ;;   setxkbmap -layout us -print | xkbcomp -xkb - - | grep '<COMP>'
+  ;;   ->  key <COMP> { [ Menu ] };
+  ;;
+  ;; Do NOT set the `compose:menu` xkb option. It rebinds <MENU> to Multi_key at
+  ;; every level, and the Menu key stops working — one keycode cannot be both.
+  ;; A compose key has to live on a keycode kanata never emits; every other
+  ;; candidate GNOME offers collides with a home row mod below (ralt/lwin/rwin/
+  ;; rctrl) or is unreachable (caps is remapped to esc), leaving only
+  ;; compose:sclk. We skip compose entirely and type accented characters from
+  ;; the br / ca input sources, which carry them natively.
+  ;;
   ;; Kanata has no equivalent of kmonad's
   ;;     output (uinput-sink "..." "<shell command>")
-  ;; nor of `cmp-seq ralt` / `cmp-seq-delay 5`.
-  ;; The arrows layer emits `cmps` (KEY_COMPOSE) instead, but that keycode is
-  ;; aliased to <MENU>, which the default layout binds to Menu rather than
-  ;; Multi_key — so it does nothing until an xkb option says otherwise:
-  ;;   gsettings set org.gnome.desktop.input-sources xkb-options "['lv3:ralt_alt', 'compose:menu']"
-  ;; compose:menu (not compose:ralt) keeps Right Alt free as the level-3 shift
-  ;; used for accented characters. 11_kanata.sh applies this automatically.
+  ;; nor of `cmp-seq ralt` / `cmp-seq-delay 5`, and its `unicode` action is
+  ;; unreliable on Wayland, so compose cannot be moved into kanata either.
   ;;
   ;; NOTE 2 (allow-cmd):
   ;; Kanata's `cmd` action only exists when the binary was compiled with
@@ -68,6 +81,14 @@
   ctb C-w
   un  C-z
   re  C-y
+  ;; Deliberately unbound — kept as the alternative to `cmps` on `y`.
+  ;; Shift+F10 is the toolkit-level "show context menu" convention (GTK and Qt
+  ;; bind it to the same popup-menu action as the Menu key), so unlike `cmps` it
+  ;; cannot be taken away by an xkb option. Bind it in the arrows layer if you
+  ;; ever want a compose key on the us layout: `compose:menu` would then claim
+  ;; keycode 127 for Multi_key, and @mnu gives back the context menu. Caveat —
+  ;; apps that only listen for the Menu keysym ignore it, and some bind Shift+F10
+  ;; to something else entirely (JetBrains IDEs use it for Run).
   mnu S-f10
   cHm C-home
 
@@ -86,7 +107,10 @@
   s_f (tap-hold-release 130 130 f rsft)
   s_j (tap-hold-release 130 130 j rsft)
   c_k (tap-hold-release 160 160 k rctl)
-  a_l (tap-hold-release 160 160 l ralt)
+  ;; lalt, not ralt: Right Alt is AltGr in the br / ca layouts, so an `ralt` hold
+  ;; would emit level-3 characters there instead of Alt. Emitting lalt leaves the
+  ;; physical Right Alt free to stay a real AltGr — no lv3:ralt_alt xkb option.
+  a_l (tap-hold-release 160 160 l lalt)
   m_; (tap-hold-release 180 180 ; rmet)
   s_1 (tap-hold-release 160 160 spc @arr)
 )
@@ -107,6 +131,7 @@
   _
 )
 
-;; `cmps` above emits KEY_COMPOSE and needs the `compose:menu` xkb option to do
-;; anything — see NOTE 1 in defcfg. Test with: hold spc, tap the cmps position,
-;; then type ' e  -> should produce é.
+;; `cmps` on the `y` position is the Menu key — see NOTE 1 in defcfg.
+;; Test with: hold spc, tap y  -> the context menu opens.
+;; kanata's `menu` / `apps` names are not a substitute: they emit KEY_MENU (139),
+;; which xkb maps to XF86MenuKB, and nothing is bound to that.
